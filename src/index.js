@@ -15,11 +15,11 @@ const app = express();
 
 // middleware
 const corsOptions = {
-  origin: ["http://localhost:3001"],
+  origin: ["http://localhost:3001", "https://node2fa.articole-smart.eu"],
   credentials: true,
 };
-// app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+
 app.use(json({ limit: "100mb" }));
 app.use(urlencoded({ limit: "100mb", extended: true }));
 
