@@ -34,3 +34,9 @@ app.use(passport.session());
 > vite.config.js -> server: { port: 3001, open: true }
 
 # Tailwind
+
+## API + Frontend
+
+> /src/service/api.js -> baseURL: `http://localhost:7001/api`,
+
+> /src/service/authApi.js
