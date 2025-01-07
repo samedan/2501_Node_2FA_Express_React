@@ -13,13 +13,31 @@ dbConnect();
 
 const app = express();
 
-// middleware
-const corsOptions = {
-  origin: ["http://localhost:3001", "https://node2fa.articole-smart.eu"],
-  credentials: true,
-};
-app.use(cors(corsOptions));
+const allowedOrigins = [
+  "http://localhost:3001",
+  "https://node2fa.articole-smart.eu",
+];
 
+// middleware
+// const corsOptions = {
+//   origin: ["http://localhost:3001", "https://node2fa.articole-smart.eu"],
+//   credentials: true,
+// };
+// app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.indexOf(origin) !== -1 || origin) {
+        return callback(null, true);
+      } else {
+        var msg =
+          "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(json({ limit: "100mb" }));
 app.use(urlencoded({ limit: "100mb", extended: true }));
 
