@@ -18,7 +18,8 @@ const corsOptions = {
   origin: ["http://localhost:3001"],
   credentials: true,
 };
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(json({ limit: "100mb" }));
 app.use(urlencoded({ limit: "100mb", extended: true }));
 
