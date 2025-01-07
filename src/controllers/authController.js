@@ -53,9 +53,22 @@ export const logout = async (req, res) => {
   // console.log(req.user);
   if (!req.user) res.status(401).json({ message: "Unauthorized User" });
   req.logout((err) => {
-    if (err) return res.status(400).json({ message: "User Not logged in" });
-    res.status(200).json({ message: "Logout successfully" });
+    if (err) {
+      return next(err);
+    }
+    req.session.destroy((err) => {
+      if (err) {
+        return next(err);
+      }
+      //clear cookie
+      res.clearCookie("connect.sid");
+      res.status(200).json({ message: "Logged out succesfully" });
+    });
   });
+  // req.logout((err) => {
+  //   if (err) return res.status(400).json({ message: "User Not logged in" });
+  //   res.status(200).json({ message: "Logout successfully" });
+  // });
 };
 
 // 2FA Setup

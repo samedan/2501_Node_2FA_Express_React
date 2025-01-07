@@ -12,11 +12,11 @@ const router = createBrowserRouter([
     element: <LoginPage />,
     errorElement: <Error />,
   },
-  {
-    path: "/",
-    element: <HomePage />,
-    errorElement: <Error />,
-  },
+  // {
+  //   path: "/",
+  //   element: <HomePage />,
+  //   errorElement: <Error />,
+  // },
   {
     element: <ProtectedRoute />,
     children: [
