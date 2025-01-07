@@ -52,3 +52,7 @@ app.use(passport.session());
 > client/src/routes.jsx -> {element: <ProtectedRoute />,children: [protected toutes]}
 
 > src/components/ProtectedRoute.jsx -> return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
+
+### Context, Session
+
+> /src/context/SessionContext.jsx -> return <SessionContext.Provider value={(isLoggedIn, user, login, logout)}>...

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { register, loginUser } from "../service/authApi";
 
-export const LoginForm = () => {
+export const LoginForm = ({ onLoginSuccess }) => {
   const [isRegister, setIsRegister] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -18,11 +18,13 @@ export const LoginForm = () => {
       setUsername("");
       setPassword("");
       setError("");
+      onLoginSuccess(data);
     } catch (error) {
       console.log(error.message);
       setError("Invalid Login Credentials");
       setUsername("");
       setPassword("");
+      setMessage("");
     }
   };
 
@@ -42,6 +44,7 @@ export const LoginForm = () => {
       setUsername("");
       setPassword("");
       setConfirmPassword("");
+      setMessage("");
     }
   };
 

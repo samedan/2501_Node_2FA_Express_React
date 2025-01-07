@@ -1,5 +1,6 @@
 import React from "react";
+import { TwoFASetup } from "../components/TwoFASetup";
 
 export const Setup2FA = () => {
-  return <div>Setup2FA</div>;
+  return <TwoFASetup />;
 };
