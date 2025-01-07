@@ -3,8 +3,12 @@ import session from "express-session";
 import passport from "passport";
 import dotenv from "dotenv";
 import cors from "cors";
+import dbConnect from "./config/dbConnect.js";
 
 dotenv.config("");
+
+//DBB
+dbConnect();
 
 const app = express();
 
