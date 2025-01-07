@@ -9,7 +9,6 @@ export const TwoFASetup = ({ onsetupComplete }) => {
   const fetchQRCode = async () => {
     const { data } = await setup2FA();
     console.log(data);
-
     setResponse(data);
   };
 
@@ -53,7 +52,7 @@ export const TwoFASetup = ({ onsetupComplete }) => {
           <input
             readOnly
             defaultValue=""
-            value=""
+            value={response.secret}
             className="w-full border rounded mt-2 text-xs text-gray-600 p-4"
             onClick={copyClipboard}
           />

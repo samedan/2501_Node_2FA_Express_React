@@ -4,7 +4,11 @@ import { useSession } from "../context/SessionContext";
 
 const ProtectedRoute = () => {
   // const isLoggedIn = false;
-  const { isLoggedIn } = useSession();
+  const { isLoggedIn, loading } = useSession();
+  console.log("Protected Route");
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 };
 
