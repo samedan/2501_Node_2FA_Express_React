@@ -1,9 +1,11 @@
 import bcrypt from "bcryptjs";
 import TwoFaUser from "../models/user.js";
 
+//REGISTER
 export const register = async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log(username, password);
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new TwoFaUser({
       username,
@@ -17,10 +19,12 @@ export const register = async (req, res) => {
     res.status(500).json({ error: "Error registering user", message: error });
   }
 };
+
+//LOGIN
 export const login = async (req, res) => {
   console.log("Authenticated user: ", req.user);
   res.status(200).json({
-    message: "User logged in ",
+    message: "User logged in succesfully",
     username: req.user.username,
     isMfaActive: req.user.isMfaActive,
   });
