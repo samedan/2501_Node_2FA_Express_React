@@ -13,31 +13,13 @@ dbConnect();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:3001",
-  "https://node2fa.articole-smart.eu",
-];
-
 // middleware
-// const corsOptions = {
-//   origin: ["http://localhost:3001", "https://node2fa.articole-smart.eu"],
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (allowedOrigins.indexOf(origin) !== -1 || origin) {
-        return callback(null, true);
-      } else {
-        var msg =
-          "The CORS policy for this site does not allow access from the specified Origin.";
-        return callback(new Error(msg), false);
-      }
-    },
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: ["http://localhost:3001", "https://node2fa.articole-smart.eu"],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(json({ limit: "100mb" }));
 app.use(urlencoded({ limit: "100mb", extended: true }));
 
@@ -58,6 +40,21 @@ app.use(passport.session());
 
 // routes
 app.use("/api/auth", authRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  // set root directory
+  const __dirname = path.resolve();
+  // make frontend a static folder
+  app.use(express.static(path.join(__dirname, "/client/dist")));
+  // any route that is not '/api/users' goes to '/frontend/dist/index.html'
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("server is ready");
+  });
+}
 
 //listen
 const PORT = process.env.PORT || 7002;
