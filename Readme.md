@@ -24,3 +24,13 @@ app.use(passport.session());
 
 > Login -> serialize user in session
 > Logout -> Deserialize user out of session
+
+## Decode QR Code
+
+> https://base64.guru/converter/decode/image
+
+### FRONTEND Vite - React
+
+> vite.config.js -> server: { port: 3001, open: true }
+
+# Tailwind
