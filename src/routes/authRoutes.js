@@ -12,14 +12,14 @@ import {
 
 const router = Router();
 
-// Registration
+// Registration @/api/auth/register
 router.post("/register", register);
 
-// Login
+// Login @/api/auth/login
 router.post("/login", passport.authenticate("local"), login);
 
-// Auth Status
-router.post("/status", authStatus);
+// Auth Status @/api/auth/status
+router.get("/status", authStatus);
 
 // Logout
 router.post("/logout", logout);
