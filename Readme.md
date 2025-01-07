@@ -1,3 +1,7 @@
+### This Git
+
+> https://github.com/samedan/2501_Node_2FA_Express_React.git
+
 # ES6
 
 > package.json -> "type":"module"
@@ -56,3 +60,5 @@ app.use(passport.session());
 ### Context, Session
 
 > /src/context/SessionContext.jsx -> return <SessionContext.Provider value={(isLoggedIn, user, login, logout)}>...
+
+> ![QRCode](https://github.com/samedan/2501_Node_2FA_Express_React/blob/main/_images/01_printscreen.jpg)
