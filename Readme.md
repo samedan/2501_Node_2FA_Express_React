@@ -40,3 +40,15 @@ app.use(passport.session());
 > /src/service/api.js -> baseURL: `http://localhost:7001/api`,
 
 > /src/service/authApi.js
+
+### Routes & Protected Routes
+
+> client/src/routes.jsx -> export router
+
+> app.jsx -> <RouterProvider router="router" />
+
+# Protected routes
+
+> client/src/routes.jsx -> {element: <ProtectedRoute />,children: [protected toutes]}
+
+> src/components/ProtectedRoute.jsx -> return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
