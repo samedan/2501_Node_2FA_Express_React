@@ -22,6 +22,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const TwoFaUser = mongoose.model("User", userSchema);
+const TwoFaUser = mongoose.model("TwoFaUser", userSchema);
 
 export default TwoFaUser;
