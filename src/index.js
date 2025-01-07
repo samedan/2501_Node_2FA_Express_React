@@ -45,6 +45,8 @@ app.use("/api/auth", authRoutes);
 if (process.env.NODE_ENV === "production") {
   // set root directory
   const __dirname = path.resolve();
+  console.log("__dirname", __dirname);
+
   // make frontend a static folder
   app.use(express.static(path.join(__dirname, "/client/dist")));
   // any route that is not '/api/users' goes to '/frontend/dist/index.html'
